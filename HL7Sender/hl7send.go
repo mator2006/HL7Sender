@@ -22,19 +22,19 @@ func main() {
 
 	configurefile := ""
 	iniexist,err := os.Stat ("config.ini")
-	jsonexist,err := os.Stat ("config.json")
-	yamlexist,err := os.Stat ("config.yaml")
+	//jsonexist,err := os.Stat ("config.json")
+	//yamlexist,err := os.Stat ("config.yaml")
 
-	if (iniexist != nil || jsonexist != nil|| yamlexist != nil){
+	if (iniexist != nil/* || jsonexist != nil|| yamlexist != nil*/){
 		if iniexist != nil {
 			configurefile = "config.ini"
 		}
-		if jsonexist != nil {
+		/*if jsonexist != nil {
 			configurefile = "config.json"
 		}
 		if yamlexist != nil {
 			configurefile = "config.yaml"
-		}
+		}*/
 		fmt.Println("Found Configure file.\nConfigure file is ["+configurefile+"].")
 		config := struct {
 			Netconn struct{
@@ -122,8 +122,8 @@ func main() {
 		}
 
 	_=iniexist
-	_=jsonexist
-	_=yamlexist
+	//_=jsonexist
+	//_=yamlexist
 
 	hl7mesg := 	"\v" + hl7mesgsub + "\x1C" + "\r"  //谨慎同上
 

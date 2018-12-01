@@ -1,1 +1,2 @@
-Hello,World!
+1: orm2dcm.xsl in DCM4CHEE directory! DCM4CHEE\server\default\conf\dcm4chee-hl7\orm2dcm.xsl Modify it for support Station NAME and Station AE Title
+2: HL7Send.go hl7mesgsub ZDS part StationNAME StationAET

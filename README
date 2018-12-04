@@ -1,0 +1,13 @@
+1: orm2dcm.xsl in DCM4CHEE directory! DCM4CHEE\server\default\conf\dcm4chee-hl7\orm2dcm.xsl Modify it for support Station NAME and Station AE Title
+2: HL7Send.go hl7mesgsub ZDS part StationNAME StationAET
+
+
+本项目中，HL7Sender是一个测试小工具，负责向HL7 服务器发送指令，新建一个DICOM MODALITY WORKLIST条目，配合测试DICOM Server和 HL7 Server使用DCM4CHEE，DCM4CHEE默认是不支持 HL7 ORM 指令中指定Station NAME 和Station AET的，可以通过修改 orm2dcm.xsl文件解决，修改方法见示例文件。
+
+
+
+
+https://github.com/dcm4che/dcm4che DCM4CHE&DCM4CHEE
+
+mator2006
+mator2006@gmail.com

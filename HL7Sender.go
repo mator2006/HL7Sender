@@ -64,21 +64,22 @@ func main() {
 			fmt.Println("You can DO THIS:\n1.Tyr modify the configure file:[" + configurefile + "]\n2.Or remove this configure files,Will use DEFAULT configure")
 			return
 		} else {
-			Host = config.Netconn.Host
-			Port = config.Netconn.Port
+			Host = strings.TrimSpace(config.Netconn.Host)
+			Port = strings.TrimSpace(config.Netconn.Port)
 
-			PatientIDID := config.HL7order.PatientIDID
-			PatientIDNAME := config.HL7order.PatientIDNAME
-			PatientIDBD := config.HL7order.PatientIDBD
-			PatientIDSEX := config.HL7order.PatientIDSEX
-			OrderControl := config.HL7order.OrderControl
-			AccessionNO := config.HL7order.AccessionNO
-			RPNO := config.HL7order.RPNO
-			SPNO := config.HL7order.SPNO
-			MODALITY := config.HL7order.MODALITY
-			SPSDESC := config.HL7order.SPSDESC
-			StationNAME := config.HL7order.StationNAME
-			StationAET := config.HL7order.StationAET
+			PatientIDID := strings.TrimSpace(config.HL7order.PatientIDID)
+			PatientIDNAME := strings.TrimSpace(config.HL7order.PatientIDNAME)
+			PatientIDNAME = strings.Replace(PatientIDNAME, " ", "^", -1)
+			PatientIDBD := strings.TrimSpace(config.HL7order.PatientIDBD)
+			PatientIDSEX := strings.TrimSpace(config.HL7order.PatientIDSEX)
+			OrderControl := strings.TrimSpace(config.HL7order.OrderControl)
+			AccessionNO := strings.TrimSpace(config.HL7order.AccessionNO)
+			RPNO := strings.TrimSpace(config.HL7order.RPNO)
+			SPNO := strings.TrimSpace(config.HL7order.SPNO)
+			MODALITY := strings.TrimSpace(config.HL7order.MODALITY)
+			SPSDESC := strings.TrimSpace(config.HL7order.SPSDESC)
+			StationNAME := strings.TrimSpace(config.HL7order.StationNAME)
+			StationAET := strings.TrimSpace(config.HL7order.StationAET)
 
 			hl7mesgsub = //此处修改需谨慎
 				`MSH|^~\&|||||||ORM^O01||P|2.3|||||CN` + "\r" +
@@ -153,4 +154,5 @@ func main() {
 	defer conn.Close()
 	fmt.Println("连接已关闭")
 }
-// test git commit 2
+
+// test git commit 3

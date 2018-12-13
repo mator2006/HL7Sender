@@ -14,8 +14,7 @@ import (
 
 func main() {
 
-	var 
-		Host,
+	var Host,
 		Port,
 		hl7mesg,
 		hl7mesgsub,
@@ -25,12 +24,12 @@ func main() {
 		PatientID,
 		OrderControl,
 		AccessionNO,
-		RPNO,SPNO,
+		RPNO, SPNO,
 		MODALITY,
 		SPSDESC,
 		StationNAME,
 		StationAET,
-		configurefile	string
+		configurefile string
 
 	iniexist, err := os.Stat("config.ini")
 	//jsonexist,err := os.Stat ("config.json")
@@ -53,18 +52,18 @@ func main() {
 				Port string
 			}
 			HL7order struct {
-				PatientID   string
-				PatientNAME string
-				PatientBD   string
-				PatientSEX  string
-				OrderControl  string
-				AccessionNO   string
-				RPNO          string
-				SPNO          string
-				MODALITY      string
-				SPSDESC       string
-				StationNAME   string
-				StationAET    string
+				PatientID    string
+				PatientNAME  string
+				PatientBD    string
+				PatientSEX   string
+				OrderControl string
+				AccessionNO  string
+				RPNO         string
+				SPNO         string
+				MODALITY     string
+				SPSDESC      string
+				StationNAME  string
+				StationAET   string
 			}
 		}{}
 
@@ -100,17 +99,17 @@ func main() {
 		input.Scan()
 		Host = input.Text()
 
-		if Host == "" || net.ParseIP(Host) == nil{
-		fmt.Println("Invalid IP address.\nEnd.")
-		return
+		if Host == "" || net.ParseIP(Host) == nil {
+			fmt.Println("Invalid IP address.\nEnd.")
+			return
 		}
 
 		fmt.Println("Please enter HL7 server PORT[Default 2575]:")
 		input = bufio.NewScanner(os.Stdin)
 		input.Scan()
 		Port = input.Text()
-		fmt.Println(Host,Port)
-		if Port == ""{
+		fmt.Println(Host, Port)
+		if Port == "" {
 			Port = "2575"
 		}
 
@@ -136,12 +135,12 @@ func main() {
 	//_=jsonexist
 	//_=yamlexist
 	hl7mesgsub = //此处修改需谨慎
-	`MSH|^~\&|||||||ORM^O01||P|2.3|||||CN` + "\r" +
-		`PID|||` + PatientID + `^^^HL7||` + PatientNAME + `^3||` + PatientBD + `|` + PatientSEX + `|||||||||||||||||||||||||||||||` + "\r" +
-		`PV1||E|||||||||||||||||V103-1^^^ADT1||||||||||||||||||||||||||||||||V|` + "\r" +
-		`ORC|` + OrderControl + `||||SC||1^once^^^^S||||||||||||` + "\r" +
-		`OBR|1|||^^^^`+SPSDESC+`||||||||||||||` + AccessionNO + `|` + RPNO + `|` + SPNO + `||||` + MODALITY + `|||1^once^^^^S|||WALK||||||||||||||P1^` + SPSDESC + `^ERL_MESA, ZDS|1.113654.3.13.1025^100^Application^DICOM` + "\r" +
-		`ZDS|2.16.840.1.113929.1.2.6493.20070508.21948.762142^DCM4CHEE^Application^DICOM|` + StationNAME + `|` + StationAET + "\r"
+		`MSH|^~\&|||||||ORM^O01||P|2.3|||||CN` + "\r" +
+			`PID|||` + PatientID + `^^^HL7||` + PatientNAME + `^3||` + PatientBD + `|` + PatientSEX + `|||||||||||||||||||||||||||||||` + "\r" +
+			`PV1||E|||||||||||||||||V103-1^^^ADT1||||||||||||||||||||||||||||||||V|` + "\r" +
+			`ORC|` + OrderControl + `||||SC||1^once^^^^S||||||||||||` + "\r" +
+			`OBR|1|||^^^^` + SPSDESC + `||||||||||||||` + AccessionNO + `|` + RPNO + `|` + SPNO + `||||` + MODALITY + `|||1^once^^^^S|||WALK||||||||||||||P1^` + SPSDESC + `^ERL_MESA, ZDS|1.113654.3.13.1025^100^Application^DICOM` + "\r" +
+			`ZDS|2.16.840.1.113929.1.2.6493.20070508.21948.762142^DCM4CHEE^Application^DICOM|` + StationNAME + `|` + StationAET + "\r"
 	hl7mesg = "\v" + hl7mesgsub + "\x1C" + "\r" //谨慎同上
 
 	//net.dial 拨号 获取tcp连接

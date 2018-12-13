@@ -120,7 +120,7 @@ func main() {
 
 		rand.Seed(time.Now().Unix())
 		DATESN := time.Now().Format("20060102")
-		QUEENSN := time.Now().Format("150405") + "00" + strconv.Itoa(rand.Intn(10))
+		QUEENSN := time.Now().Format("150405") + "0" + strconv.Itoa(rand.Intn(10))
 
 		PatientID = DATESN + QUEENSN
 		PatientNAME = "Liu^Bei"
@@ -128,8 +128,8 @@ func main() {
 		PatientSEX = "M"
 		OrderControl = "NW"
 		AccessionNO = DATESN + QUEENSN
-		RPNO = "RP" + DATESN + QUEENSN
-		SPNO = "SP" + DATESN + QUEENSN
+		RPNO = "RP" + AccessionNO[2:len(DATESN + QUEENSN)]
+		SPNO = "SP" + AccessionNO[2:len(DATESN + QUEENSN)]
 		MODALITY = "MR"
 		SPSDESC = "Tou Lu"
 		StationNAME = "NO3RF"

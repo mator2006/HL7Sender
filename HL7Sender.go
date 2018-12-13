@@ -86,7 +86,7 @@ func main() {
 					`PID|||` + PatientIDID + `^^^HL7||` + PatientIDNAME + `^3||` + PatientIDBD + `|` + PatientIDSEX + `|||||||||||||||||||||||||||||||` + "\r" +
 					`PV1||E|||||||||||||||||V103-1^^^ADT1||||||||||||||||||||||||||||||||V|` + "\r" +
 					`ORC|` + OrderControl + `||||SC||1^once^^^^S||||||||||||` + "\r" +
-					`OBR|1|||||||||||||||||` + AccessionNO + `|` + RPNO + `|` + SPNO + `||||` + MODALITY + `|||1^once^^^^S|||WALK||||||||||||||P1^` + SPSDESC + `^ERL_MESA, ZDS|1.113654.3.13.1025^100^Application^DICOM` + "\r" +
+					`OBR|1|||^^^^`+SPSDESC+`||||||||||||||` + AccessionNO + `|` + RPNO + `|` + SPNO + `||||` + MODALITY + `|||1^once^^^^S|||WALK||||||||||||||P1^` + SPSDESC + `^ERL_MESA, ZDS|1.113654.3.13.1025^100^Application^DICOM` + "\r" +
 					`ZDS|2.16.840.1.113929.1.2.6493.20070508.21948.762142^DCM4CHEE^Application^DICOM|` + StationNAME + `|` + StationAET + "\r"
 		}
 	} else {
@@ -117,7 +117,7 @@ func main() {
 				`PID|||` + PatientIDID + `^^^HL7||` + PatientIDNAME + `^3||` + PatientIDBD + `|` + PatientIDSEX + `|||||||||||||||||||||||||||||||` + "\r" +
 				`PV1||E|||||||||||||||||V103-1^^^ADT1||||||||||||||||||||||||||||||||V|` + "\r" +
 				`ORC|` + OrderControl + `||||SC||1^once^^^^S||||||||||||` + "\r" +
-				`OBR|1|||||||||||||||||` + AccessionNO + `|` + RPNO + `|` + SPNO + `||||` + MODALITY + `|||1^once^^^^S|||WALK||||||||||||||P1^` + SPSDESC + `^ERL_MESA, ZDS|1.113654.3.13.1025^100^Application^DICOM` + "\r" +
+				`OBR|1|||^^^^`+SPSDESC+`||||||||||||||` + AccessionNO + `|` + RPNO + `|` + SPNO + `||||` + MODALITY + `|||1^once^^^^S|||WALK||||||||||||||P1^` + SPSDESC + `^ERL_MESA, ZDS|1.113654.3.13.1025^100^Application^DICOM` + "\r" +
 				`ZDS|2.16.840.1.113929.1.2.6493.20070508.21948.762142^DCM4CHEE^Application^DICOM|` + StationNAME + `|` + StationAET + "\r"
 
 	}
@@ -155,4 +155,5 @@ func main() {
 	fmt.Println("连接已关闭")
 }
 
-// test git commit 3
+//OBR|1|||| to OBR|1|||^^^^`+SPSDESC+`| mator 2018.12.13
+// test git commit 5
